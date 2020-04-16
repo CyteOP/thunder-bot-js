@@ -48,7 +48,7 @@ client.on("ready", () => {
   client.user.setPresence({
     status: "online",
     game: {
-      name: "!info",
+      name: "in " + client.guilds.size + " servers.",
       type: "PLAYING"
     }
   });
