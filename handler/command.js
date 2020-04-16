@@ -14,9 +14,9 @@ module.exports = client => {
 
       if (pull.name) {
         client.commands.set(pull.name, pull);
-        table.addRow(file, `✅`);
+        table.addRow(file, `Loaded!`);
       } else {
-        table.addRow(file, `❌ -> missing something??`);
+        table.addRow(file, `Error. -> missing something?`);
         continue;
       }
 

@@ -1,10 +1,9 @@
 const { RichEmbed } = require("discord.js");
 const fs = require("fs");
-const { generateRandomColor } = require("../../functions.js");
 const readline = require("readline");
 const curl = require("curlrequest");
 
-var quotes;
+var quotes = [];
 
 curl.request(
   {
@@ -22,18 +21,15 @@ module.exports = {
   description: "Gives Dating Advice.",
   guildOnly: true,
   run: async (client, message, args) => {
-    if (message.deletable) {
-      message.delete();
-    }
 
-    let index = Math.abs(Math.floor(Math.random() * quotes.length) - 1);
+    let index = Math.abs(Math.floor(Math.random() * quotes.length));
 
     if (args[0] !== undefined) {
       index = parseInt(args[0]) - 1;
     }
 
     let embed = new RichEmbed()
-      .setColor(generateRandomColor())
+      .setColor("RANDOM")
       .setDescription(quotes[index]);
 
     message.channel.send(embed);

@@ -48,7 +48,7 @@ client.on("ready", () => {
   client.user.setPresence({
     status: "online",
     game: {
-      name: "in " + client.guilds.size + " servers.",
+      name: `in ${client.guilds.size} servers.`,
       type: "PLAYING"
     }
   });
@@ -62,25 +62,17 @@ client.on("ready", () => {
 client.on("guildMemberAdd", member => {
   const guild = member.guild;
   const defaultChannel = guild.channels.find("name", "announcements");
-  defaultChannel.send(`Welcome to the Thunder Squad, <@{member.id}>!`);
+  defaultChannel.send(`Welcome to ${guild.name}, <@${member.id}>!`);
 
-  member.send(stripIndents`Hi, <@{member.id}>! Welcome to ${guild.name}! I am TheThunderBot, a bot created by Jacob Cohen for the Thunder Squad's Discord server!
-                          A couple of my features are Music, Moderation, and Currency! Use '.help' to get a list of my commands!
-                          Make sure to check out the rules, and enjoy your time with the Thunder Squad!`);
+  member.send(stripIndents`Hi, <@${member.id}>! Welcome to ${guild.name}! I am TheThunderBot, a bot created by <@${process.env.DEVELOPER}>!
+                          A couple of my features are Music, Moderation, and Currency! Use '!help' to get a list of my commands!
+                          Make sure to check out the rules, and enjoy your time with ${guild.name}!`);
 });
 
 client.on("message", async message => {
   const prefix = "!";
 
-  //if (message.author.bot) return;
-  if (!message.guild) {
-    if (dev.includes(message.author.id)) {
-      client.channels.get(process.env.TSGENERAL).send(message.content);
-    }
-    return;
-  }
-
-  if (profanity.exists(message.content)) {
+  if (profanity.exists(message.content) && false) {
     message.delete();
     message.reply("You cannot say that!").then(m => m.delete(5000));
     message.channel.send("!mute <@" + message.author.id + "> 2 Banned word");
@@ -88,12 +80,12 @@ client.on("message", async message => {
   }
 
   Object.keys(respond).forEach(function(key) {
-    if (message.content.toLowerCase().includes(key)) {
+    if (message.content.toLowerCase().includes(key) && message.guild.id != "264445053596991498") {
       return message.channel.send(respond[key]);
     }
   });
 
-  if (!message.author.bot && !message.content.startsWith(prefix)) {
+  if (!message.author.bot && !message.content.startsWith(prefix) && message.guild.id != "264445053596991498") {
     let xpAmount = Math.floor(Math.random() * 10) + 15;
     let baseXpAmount = Math.floor(Math.random() * 10) + 15;
 
@@ -177,6 +169,7 @@ client.log = async (content, title, type) => {
   } else if (type === "error") {
     client.channels.get(process.env.DEVCHANNEL).send(embed);
   } else if (type === "joinleave") {
+    client.channels.get(process.env.DEVCHANNEL).send(`<@${process.env.DEVELOPER}>`);
     client.channels.get(process.env.DEVCHANNEL).send(embed);
   }
 };
