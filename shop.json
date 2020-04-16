@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Experience",
+    "key": "xp",
+    "usage": "xp <Amount>",
+    "cost": 1
+  },
+  {
+    "name": "Strength Syrum",
+    "key": "strength",
+    "usage": "strength <Amount>",
+    "cost": 10000
+  }
+]

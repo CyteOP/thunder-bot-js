@@ -1,0 +1,40 @@
+{
+  "name": "definitelyjacob",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Jacob Cohen",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.2.0",
+    "better-sqlite3": "^5.4.3",
+    "ascii-table": "^0.0.9",
+    "curlrequest": "^1.0.1",
+    "common-tags": "^1.8.0",
+    "node-fetch": "^2.6.0",
+    "ffmpeg": "^0.0.4",
+    "ffmpeg-binaries": "^4.0.0",
+    "opusscript": "^0.0.7",
+    "ytdl-core": "^1.0.6",
+    "youtube-search": "^1.1.4",
+    "random-puppy": "^1.1.0",
+    "jimp": "^0.9.3",
+    "fuzzy-search": "^3.0.2",
+    "rimraf": "^3.0.0",
+    "yieldable-json": "^2.0.0",
+    "dateformat": "^3.0.3",
+    "mysql": "^2.17.1",
+    "iworker": "^0.2.0",
+    "beautify": "^0.0.8",
+    "@2toad/profanity": "^1.1.0",
+    "hookcord": "^2.0.2",
+    "mongoose": "^5.8.11"
+  },
+  "engines": {
+    "node": "11.x"
+  }
+}
