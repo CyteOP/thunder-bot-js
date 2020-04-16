@@ -26,6 +26,10 @@ module.exports = {
 
     var cash = parseInt(args[0]);
 
+    if (isNaN(cash)) {
+      return message.reply("Please input a number amount to gamble.");
+    }
+
     var earned = Math.ceil(Math.random() * (cash * 2));
 
     var netGain = earned - cash;
