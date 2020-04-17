@@ -574,7 +574,7 @@ module.exports = {
             .addField("Grain", `${inv.grain} lbs.`, true)
             .addField("Meat", `${inv.meat} lbs.`, true)
             .setFooter(
-              `Use '!sell all' to sell all your materials for ${Math.floor(
+              `Use '${client.prefix}sell all' to sell all your materials for ${Math.floor(
                 amount
               )} coins!`
             );

@@ -8,19 +8,12 @@ module.exports = {
   run: async (client, message, args) => {
     let embed = new RichEmbed()
       .setTitle("Information")
-      .setColor(0xff45ff)
-      .setDescription(
-        "<@658067084344950794> is created as a project in order to learn Bot Development. It evolved into this, a huge overcomplicated bot!"
-      )
-      .addField(
-        "Developer",
-        "The developer of <@658067084344950794> is <@446127283384614914>"
-      )
-      .addField("Commands", 'Use "!help" to show commands.')
-      .addField(
-        "Version",
-        "V0.1.1"
-      );
+      .setColor("RANDOM")
+      .setDescription("<@658067084344950794> is created as a project in order to learn Bot Development. It evolved into this, a huge overcomplicated bot!")
+      .addField("Developer", "The developer of <@658067084344950794> is <@446127283384614914>", true)
+      .addField("Commands", `Use "${client.prefix}help" to show commands.`, true)
+      .addField("Version", "V0.1.1", true)
+      .addField("Prefix", `My Prefix is ${client.prefix}`, true);
 
     message.channel.send(embed);
   }
