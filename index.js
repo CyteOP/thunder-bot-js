@@ -27,6 +27,8 @@ const cooldowns = new Collection();
 client.commands = new Collection();
 client.aliases = new Collection();
 
+client.prefix = process.env.PREFIX;
+
 client.categories = fs.readdirSync("./commands/");
 
 client.queue = new Map();
@@ -70,12 +72,11 @@ client.on("guildMemberAdd", member => {
 });
 
 client.on("message", async message => {
-  const prefix = "!";
 
   if (profanity.exists(message.content) && false) {
     message.delete();
     message.reply("You cannot say that!").then(m => m.delete(5000));
-    message.channel.send("!mute <@" + message.author.id + "> 2 Banned word");
+    message.channel.send(client.prefix + "mute <@" + message.author.id + "> 2 Banned word");
     return;
   }
 
@@ -85,7 +86,7 @@ client.on("message", async message => {
     }
   });
 
-  if (!message.author.bot && !message.content.startsWith(prefix) && message.guild.id != "264445053596991498") {
+  if (!message.author.bot && !message.content.startsWith(client.prefix) && message.guild.id != "264445053596991498") {
     let xpAmount = Math.floor(Math.random() * 10) + 15;
     let baseXpAmount = Math.floor(Math.random() * 10) + 15;
 
@@ -109,12 +110,12 @@ client.on("message", async message => {
     }
   }
 
-  if (!message.content.startsWith(prefix)) return;
+  if (!message.content.startsWith(client.prefix)) return;
   if (!message.member)
     message.member = await message.guild.fetchMember(message);
 
   const args = message.content
-    .slice(prefix.length)
+    .slice(client.prefix.length)
     .trim()
     .split(/ +/g);
   const cmd = args.shift().toLowerCase();
